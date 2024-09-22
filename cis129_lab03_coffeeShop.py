@@ -1,3 +1,5 @@
+'''This program was created by Christopher Cutcliffe
+    for the class CIS129'''
 # This records purchases from user as integers.
 c = int(input('How many coffees would you like to purchase?'))
 m = int(input('How many muffins would you like to purchase?'))
