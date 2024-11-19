@@ -23,20 +23,25 @@ def create_file(message_1, message_2, message_3, message_4, message_5):
     grade_1 = -1
     grade_2 = -1
     grade_3 = -1
-    # open file for write mode. note that this will erase existing content!
-    with open('grades.csv', mode='w', newline='') as grades:
-        # create writer object
-        writer = csv.writer(grades)
-        # loop until sentinel is entered
-        while first_name.upper() != 'QUIT':
-            first_name = validate_input(message_1, str)
-            # only proceed if it is not the sentinel
-            if first_name.upper() != 'QUIT':
-                last_name = validate_input(message_2, str)
-                grade_1 = check_grades(message_3)
-                grade_2 = check_grades(message_4)
-                grade_3 = check_grades(message_5)
-                writer.writerow([first_name, last_name, grade_1, grade_2, grade_3])
+    try:
+        # open file for write mode. note that this will erase existing content!
+        with open('grades.csv', mode='w', newline='') as grades:
+            # create writer object
+            writer = csv.writer(grades)
+            # loop until sentinel is entered
+            while first_name.upper() != 'QUIT':
+                first_name = validate_input(message_1, str)
+                # only proceed if it is not the sentinel
+                if first_name.upper() != 'QUIT':
+                    last_name = validate_input(message_2, str)
+                    grade_1 = check_grades(message_3)
+                    grade_2 = check_grades(message_4)
+                    grade_3 = check_grades(message_5)
+                    writer.writerow([first_name, last_name,
+                                     grade_1, grade_2, grade_3])
+    except:
+        # the file was probably in an illegal location or something
+        print("Something went wrong!")
     return
 
 # function that ensures grades are valid
